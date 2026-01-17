@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-keycloak/web": "^3.4.0",
     "autoprefixer": "^10.4.23",
     "axios": "^1.13.2",
     "keycloak-js": "^26.2.2",
