@@ -42,6 +42,18 @@ mvn clean install
 
 The entire system can be started with Docker Compose.
 
+### Running Infrastructure Services Only
+
+To run only the core infrastructure services (MySQL, Axon Server, Kafka, Zookeeper, Keycloak, Eureka Server), use the `docker-compose.infra.yml` file:
+
+```bash
+docker-compose -f docker-compose.infra.yml up -d
+```
+
+This is useful if you want to run the Spring Boot applications and frontend manually in your IDE.
+
+### Running All Services
+
 1. **Start the infrastructure services:**
 
 ```bash
