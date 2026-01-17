@@ -52,6 +52,24 @@ docker-compose -f docker-compose.infra.yml up -d
 
 This is useful if you want to run the Spring Boot applications and frontend manually in your IDE.
 
+### Running Spring Boot Applications Locally (with Infrastructure from Docker Compose)
+
+If you've started the infrastructure services using `docker-compose -f docker-compose.infra.yml up -d`, you can run individual Spring Boot microservices directly from your IDE.
+
+To do this, activate the `local` Spring profile for each application. This profile configures the applications to connect to `localhost` and the host-mapped ports exposed by Docker Compose.
+
+For example, to run the Keynote Service locally, you would typically configure your IDE (e.g., IntelliJ IDEA, VS Code) to pass `spring.profiles.active=local` as a VM option or program argument.
+
+Alternatively, you can run from the command line:
+
+```bash
+cd keynote-service
+mvn spring-boot:run -Dspring-boot.run.profiles=local
+# Repeat for conference-service, analytics-service, gateway-service
+```
+
+Make sure that the necessary infrastructure containers (MySQL, Axon Server, Kafka, Eureka Server) are running and accessible on `localhost` via their exposed ports (e.g., MySQL Keynote on 3307, MySQL Conference on 3308, Axon Server on 8124, Kafka on 9092, Eureka Server on 8761, Keycloak on 8080).
+
 ### Running All Services
 
 1. **Start the infrastructure services:**
