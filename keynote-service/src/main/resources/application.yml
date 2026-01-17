@@ -2,7 +2,7 @@ spring:
   application:
     name: keynote-service
   datasource:
-    url: jdbc:mysql://mysql-keynote:3306/keynote_db
+    url: jdbc:mysql://mysql-keynote:3307/keynote_db?createDatabaseIfNotExist=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,6 +10,9 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
 
 axon:
   axonserver:
