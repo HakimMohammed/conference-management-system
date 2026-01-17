@@ -8,6 +8,7 @@ spring:
 axon:
   axonserver:
     servers: localhost:8124
+    component-name: ${spring.application.name}
 
 eureka:
   client:

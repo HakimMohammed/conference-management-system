@@ -17,6 +17,7 @@ spring:
 axon:
   axonserver:
     servers: axon-server:8124
+    component-name: ${spring.application.name}
 
 eureka:
   client:
