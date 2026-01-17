@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: keynote-service
+  datasource:
+    url: jdbc:mysql://mysql-keynote:3306/keynote_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+axon:
+  axonserver:
+    servers: axon-server:8124
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: 8081
