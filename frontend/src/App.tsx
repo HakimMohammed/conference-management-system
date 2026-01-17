@@ -8,6 +8,7 @@ import HomePage from './pages/Home';
 import KeynotesPage from './pages/KeynotesPage';
 import ConferencesPage from './pages/ConferencesPage';
 import ConferenceDetailsPage from './pages/ConferenceDetailsPage';
+import AnalyticsPage from './pages/AnalyticsPage';
 
 const App: React.FC = () => {
     return (
@@ -48,6 +49,14 @@ const App: React.FC = () => {
                             </ProtectedRoute>
                         }
                     />
+                    <Route
+                        path="/analytics"
+                        element={
+                            <ProtectedRoute>
+                                <AnalyticsPage />
+                            </ProtectedRoute>
+                        }
+                    />
                 </Routes>
             </Router>
         </ReactKeycloakProvider>
@@ -68,6 +77,9 @@ const Nav: React.FC = () => {
                 </li>
                 <li>
                     <Link to="/conferences">Conferences</Link>
+                </li>
+                <li>
+                    <Link to="/analytics">Analytics</Link>
                 </li>
                 {keycloak.authenticated && (
                     <li className="ml-auto">
