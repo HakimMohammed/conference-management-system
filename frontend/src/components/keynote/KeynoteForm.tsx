@@ -12,18 +12,23 @@ const KeynoteForm: React.FC<KeynoteFormProps> = ({ keynoteToEdit, onSave, onCanc
         firstName: '',
         lastName: '',
         email: '',
-        function: '',
+        keynoteFunction: '',
     });
 
     useEffect(() => {
         if (keynoteToEdit) {
-            setKeynote(keynoteToEdit);
+            setKeynote({
+                firstName: keynoteToEdit.firstName,
+                lastName: keynoteToEdit.lastName,
+                email: keynoteToEdit.email,
+                keynoteFunction: keynoteToEdit.keynoteFunction,
+            });
         } else {
             setKeynote({
                 firstName: '',
                 lastName: '',
                 email: '',
-                function: '',
+                keynoteFunction: '',
             });
         }
     }, [keynoteToEdit]);
@@ -68,8 +73,8 @@ const KeynoteForm: React.FC<KeynoteFormProps> = ({ keynoteToEdit, onSave, onCanc
                 />
                 <input
                     type="text"
-                    name="function"
-                    value={keynote.function}
+                    name="keynoteFunction"
+                    value={keynote.keynoteFunction}
                     onChange={handleChange}
                     placeholder="Function"
                     className="p-2 border rounded"

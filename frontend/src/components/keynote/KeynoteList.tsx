@@ -16,7 +16,7 @@ const KeynoteList: React.FC<KeynoteListProps> = ({ keynotes, onEdit, onDelete })
                     <li key={keynote.keynoteId} className="flex items-center justify-between p-2 border-b">
                         <div>
                             <p className="font-bold">{keynote.firstName} {keynote.lastName}</p>
-                            <p>{keynote.email} - {keynote.function}</p>
+                            <p>{keynote.email} - {keynote.keynoteFunction}</p>
                         </div>
                         <div>
                             <button

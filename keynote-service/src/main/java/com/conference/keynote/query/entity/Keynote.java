@@ -16,5 +16,5 @@ public class Keynote {
     private String firstName;
     private String lastName;
     private String email;
-    private String function;
+    private String keynoteFunction;
 }

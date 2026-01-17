@@ -19,7 +19,7 @@ public class KeynoteAggregate {
     private String firstName;
     private String lastName;
     private String email;
-    private String function;
+    private String keynoteFunction;
 
     @CommandHandler
     public KeynoteAggregate(CreateKeynoteCommand command) {
@@ -28,7 +28,7 @@ public class KeynoteAggregate {
                 command.getFirstName(),
                 command.getLastName(),
                 command.getEmail(),
-                command.getFunction()
+                command.getKeynoteFunction()
         ));
     }
 
@@ -38,7 +38,7 @@ public class KeynoteAggregate {
         this.firstName = event.getFirstName();
         this.lastName = event.getLastName();
         this.email = event.getEmail();
-        this.function = event.getFunction();
+        this.keynoteFunction = event.getKeynoteFunction();
     }
 
     @CommandHandler
@@ -48,7 +48,7 @@ public class KeynoteAggregate {
                 command.getFirstName(),
                 command.getLastName(),
                 command.getEmail(),
-                command.getFunction()
+                command.getKeynoteFunction()
         ));
     }
 
@@ -57,7 +57,7 @@ public class KeynoteAggregate {
         this.firstName = event.getFirstName();
         this.lastName = event.getLastName();
         this.email = event.getEmail();
-        this.function = event.getFunction();
+        this.keynoteFunction = event.getKeynoteFunction();
     }
 
     @CommandHandler

@@ -3,5 +3,5 @@ export interface Keynote {
     firstName: string;
     lastName: string;
     email: string;
-    function: string;
+    keynoteFunction: string;
 }
