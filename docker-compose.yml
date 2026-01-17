@@ -79,6 +79,53 @@ services:
       timeout: 5s
       retries: 5
 
+  eureka-server:
+    build:
+      context: ./eureka-server
+    ports:
+      - "8761:8761"
+
+  gateway-service:
+    build:
+      context: ./gateway-service
+    ports:
+      - "8888:8888"
+    depends_on:
+      - eureka-server
+      - keynote-service
+      - conference-service
+      - analytics-service
+
+  keynote-service:
+    build:
+      context: ./keynote-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql-keynote
+      - axon-server
+      - eureka-server
+
+  conference-service:
+    build:
+      context: ./conference-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql-conference
+      - axon-server
+      - eureka-server
+      - kafka
+
+  analytics-service:
+    build:
+      context: ./analytics-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - kafka
+      - eureka-server
+
 networks:
   default:
     name: conference-network
