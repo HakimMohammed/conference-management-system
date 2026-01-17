@@ -126,6 +126,14 @@ services:
       - kafka
       - eureka-server
 
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - gateway-service
+
 networks:
   default:
     name: conference-network
