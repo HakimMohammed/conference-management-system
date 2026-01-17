@@ -1,0 +1,40 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: keynote-service
+          uri: lb://KEYNOTE-SERVICE
+          predicates:
+            - Path=/keynotes/**
+        - id: conference-service
+          uri: lb://CONFERENCE-SERVICE
+          predicates:
+            - Path=/conferences/**
+        - id: analytics-service
+          uri: lb://ANALYTICS-SERVICE
+          predicates:
+            - Path=/analytics/**
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/conference-realm
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
