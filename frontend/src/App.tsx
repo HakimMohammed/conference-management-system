@@ -6,6 +6,8 @@ import ProtectedRoute from './components/common/ProtectedRoute';
 import LoginPage from './pages/Login';
 import HomePage from './pages/Home';
 import KeynotesPage from './pages/KeynotesPage';
+import ConferencesPage from './pages/ConferencesPage';
+import ConferenceDetailsPage from './pages/ConferenceDetailsPage';
 
 const App: React.FC = () => {
     return (
@@ -30,6 +32,22 @@ const App: React.FC = () => {
                             </ProtectedRoute>
                         }
                     />
+                    <Route
+                        path="/conferences"
+                        element={
+                            <ProtectedRoute>
+                                <ConferencesPage />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/conferences/:id"
+                        element={
+                            <ProtectedRoute>
+                                <ConferenceDetailsPage />
+                            </ProtectedRoute>
+                        }
+                    />
                 </Routes>
             </Router>
         </ReactKeycloakProvider>
@@ -47,6 +65,9 @@ const Nav: React.FC = () => {
                 </li>
                 <li>
                     <Link to="/keynotes">Keynotes</Link>
+                </li>
+                <li>
+                    <Link to="/conferences">Conferences</Link>
                 </li>
                 {keycloak.authenticated && (
                     <li className="ml-auto">
