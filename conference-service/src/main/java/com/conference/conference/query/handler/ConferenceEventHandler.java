@@ -11,6 +11,7 @@ import com.conference.conference.query.repository.ReviewRepository;
 import lombok.AllArgsConstructor;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.BeanUtils;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,6 +20,7 @@ public class ConferenceEventHandler {
 
     private final ConferenceRepository conferenceRepository;
     private final ReviewRepository reviewRepository;
+    private final KafkaTemplate<String, ReviewAddedEvent> kafkaTemplate;
 
     @EventHandler
     public void on(ConferenceCreatedEvent event) {
@@ -47,6 +49,7 @@ public class ConferenceEventHandler {
             BeanUtils.copyProperties(event, review);
             review.setConference(conference);
             reviewRepository.save(review);
+            kafkaTemplate.send("review-events", event);
         }
     }
 }
